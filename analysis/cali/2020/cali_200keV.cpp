@@ -2,7 +2,7 @@
 void cali_200keV()
 {
   TFile *ff;
-  ff = TFile::Open("../../../exp_data/2020_rawdata/rootfile/c_200keV.root");
+  ff = TFile::Open("../../../../exp_data/2020_rawdata/rootfile/c_200keV.root");
 
   TH1D *h1 = (TH1D*)ff->Get("h1");
   auto cc = new TCanvas("cc", "cc", 0, 0, 480, 360);
