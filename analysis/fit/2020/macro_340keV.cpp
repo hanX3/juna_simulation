@@ -20,6 +20,9 @@
   gROOT->ProcessLine("getrootfile(340, 339.8)");
   gROOT->ProcessLine("getrootfile(340, 339.9)");
   gROOT->ProcessLine("getrootfile(340, 340.0)");
+  gROOT->ProcessLine("getrootfile(340, 340.1)");
+  gROOT->ProcessLine("getrootfile(340, 340.2)");
+  gROOT->ProcessLine("getrootfile(340, 340.3)");
 
   gROOT->ProcessLine(".q");
 }
