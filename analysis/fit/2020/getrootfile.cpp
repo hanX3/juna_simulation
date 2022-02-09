@@ -4,7 +4,7 @@
 #include <dirent.h>
 
 //data path
-string rawdata = "../../../../";
+string rawdata = "../../../../sim_raw_data/";
 string rootfilepath = "../../../../rootfile/2020/";
 string expdata = "../../../../exp_data/";
 
@@ -44,7 +44,7 @@ void getrootfile(int beam_energy, double sim_energy)
   //data path
   stringstream ss;
   ss.str("");
-  ss << rawdata << "fit_exp_" << beam_energy << "keV/em_" << setiosflags(ios::fixed) << setprecision(1) << sim_energy << "/data/";
+  ss << rawdata << beam_energy << "keV/em_" << setiosflags(ios::fixed) << setprecision(1) << sim_energy << "/data/";
   string datapath(ss.str());
   cout << ss.str() << endl;
   ss.str("");

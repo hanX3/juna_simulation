@@ -64,3 +64,42 @@ Info in <TCanvas::MakeDefCanvas>:  created default TCanvas with name c1
 ../../../../fit_exp_320keV/em_319.8/data/
 ../../../../rootfile/2020/proton_319.8keV.root
 ../../../../exp_data/2020_320keV.txt
+
+Processing macro_320keV.cpp...
+../../../../fit_exp_320keV/em_317.1/data/
+../../../../rootfile/2020/proton_317.1keV.root
+../../../../exp_data/2020_320keV.txt
+Info in <TCanvas::MakeDefCanvas>:  created default TCanvas with name c1
+../../../../fit_exp_320keV/em_317.2/data/
+../../../../rootfile/2020/proton_317.2keV.root
+../../../../exp_data/2020_320keV.txt
+../../../../fit_exp_320keV/em_317.3/data/
+../../../../rootfile/2020/proton_317.3keV.root
+../../../../exp_data/2020_320keV.txt
+../../../../fit_exp_320keV/em_317.4/data/
+../../../../rootfile/2020/proton_317.4keV.root
+../../../../exp_data/2020_320keV.txt
+../../../../fit_exp_320keV/em_317.5/data/
+../../../../rootfile/2020/proton_317.5keV.root
+../../../../exp_data/2020_320keV.txt
+../../../../fit_exp_320keV/em_317.6/data/
+../../../../rootfile/2020/proton_317.6keV.root
+../../../../exp_data/2020_320keV.txt
+../../../../fit_exp_320keV/em_317.7/data/
+../../../../rootfile/2020/proton_317.7keV.root
+../../../../exp_data/2020_320keV.txt
+#0  0x00007fd5ec4d94fc in waitpid () from /usr/lib64/libc.so.6
+#1  0x00007fd5ec456fb2 in do_system () from /usr/lib64/libc.so.6
+#2  0x00007fd5ed501fc1 in TUnixSystem::StackTrace() () from /opt/root62208/lib/libCore.so.6.22
+#3  0x00007fd5e81c6878 in cling::MultiplexInterpreterCallbacks::PrintStackTrace() () from /opt/root62208/lib/libCling.so
+#4  0x00007fd5e81c5d1e in cling_runtime_internal_throwIfInvalidPointer () from /opt/root62208/lib/libCling.so
+#5  0x00007fd5edd60361 in ?? ()
+#6  0x00007fff63546f70 in ?? ()
+#7  0x00007fd5ecfcdc70 in std::basic_filebuf<char, std::char_traits<char> >::underflow (this=0x0) at /home/sdu/Downloads/BasicConfiguration/CentOS7/gcc-4.9.4/x86_64-unknown-linux-gnu/libstdc++-v3/include/bits/fstream.tcc:235
+#8  0x0000000000000000 in ?? ()
+Error in <HandleInterpreterException>: Trying to dereference null pointer or trying to call routine taking non-null arguments.
+Execution of your code was aborted.
+In file included from input_line_12:1:
+/media/DATA4T2/hanX/simulation/juna/git/analysis/fit/2020/getrootfile.cpp:26:22: warning: null passed to a callee that requires a non-null argument [-Wnonnull]
+  while((ptr=readdir(dir))!=NULL){
+                     ^~~
