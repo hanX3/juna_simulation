@@ -28,8 +28,8 @@ string fitfuncscale = "pol6";
 double scalestep = 0.01;
 
 //fall part
-double fallpartstart = 2257.0;
-double fallpartstop = 2260.6;
+double fallpartstart = 2256.8;
+double fallpartstop = 2260.4;
 string fitfuncfall = "pol2";
 
 //main

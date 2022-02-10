@@ -4,22 +4,19 @@
 #include <dirent.h>
 
 //data path
-string rawdata = "../../fit_exp_200keV/";
-string rootfilepath = "../2019_ana/200keV/rootfile/";
-string expdata = "../../exp_data/2019_200keV.txt";
+string rawdata = "../../../../sim_raw_data/";
+string rootfilepath = "../../../../rootfile/2019/";
+string expdata = "../../../../exp_data/";
 
 //exp adc range
 //1600-3600 2000 bin 2019 exp
-//3300-6300 3000 bin 2020 exp
 double adcmin = 1600;
 double adcmax = 3600;
 int binnum = 2000;
 
 //set cali par
-//2.8288 0.812423 2019 exp
-//1.80872 0.429475 2020 exp
-double p0 = 2.8288;
-double p1 = 0.812423;
+double p0 = 2.58919;
+double p1 = 0.812258;
 
 bool getfilename(string dirpath, vector<TString>  &vfiles)
 {
@@ -40,26 +37,28 @@ bool getfilename(string dirpath, vector<TString>  &vfiles)
 }
 
 //main
-void getrootfile_new(double beam_energy)
+void getrootfile(int beam_energy, double sim_energy)
 {
   gROOT->SetBatch(1);
 
   //data path
   stringstream ss;
   ss.str("");
-  ss << rawdata << "em_" << setiosflags(ios::fixed) << setprecision(1) << beam_energy << "/data/";
+  ss << rawdata << beam_energy << "keV/em_" << setiosflags(ios::fixed) << setprecision(1) << sim_energy << "/data/";
   string datapath(ss.str());
   cout << ss.str() << endl;
-
   ss.str("");
-  ss << rootfilepath << "proton_" << beam_energy << "keV.root";
+  ss << rootfilepath << "proton_" << sim_energy << "keV.root";
   TFile *fo = new TFile(ss.str().c_str(), "RECREATE");
 
   gStyle->SetOptStat(0);
 
   //read exp data
   ifstream fi;
-  fi.open(expdata.c_str());
+  ss.str("");
+  ss << expdata << "2019_" << beam_energy << "keV.txt";
+  cout << ss.str() << endl;
+  fi.open(ss.str().c_str());
 
   TH1D *h1 = new TH1D("h1", "h1", binnum, p0+adcmin*p1, p0+adcmax*p1);
 
@@ -106,7 +105,7 @@ void getrootfile_new(double beam_energy)
   hsim_1->GetXaxis()->SetTitle("Gamma Energy [keV]");
   hsim_1->GetYaxis()->SetTitle("Counts");
   ss.str("");
-  ss << "beam energy " << beam_energy << " keV";
+  ss << "sim energy " << sim_energy << " keV";
   hsim_1->SetTitle(ss.str().c_str());
   chain->Draw("energy0>>hsim_1", "energy0>10.", "");
 
@@ -114,7 +113,7 @@ void getrootfile_new(double beam_energy)
   hsim_2->GetXaxis()->SetTitle("Gamma Energy [keV]");
   hsim_2->GetYaxis()->SetTitle("Counts");
   ss.str("");
-  ss << "beam energy " << beam_energy << " keV";
+  ss << "sim energy " << sim_energy << " keV";
   hsim_2->SetTitle(ss.str().c_str());
   chain->Draw("energy0>>hsim_2", "energy0>10.", "");
 
@@ -122,7 +121,7 @@ void getrootfile_new(double beam_energy)
   hsim_3->GetXaxis()->SetTitle("Gamma Energy [keV]");
   hsim_3->GetYaxis()->SetTitle("Counts");
   ss.str("");
-  ss << "beam energy " << beam_energy << " keV";
+  ss << "sim energy " << sim_energy << " keV";
   hsim_3->SetTitle(ss.str().c_str());
   chain->Draw("energy0>>hsim_3", "energy0>10.", "");
 
@@ -130,7 +129,7 @@ void getrootfile_new(double beam_energy)
   hsim_4->GetXaxis()->SetTitle("Gamma Energy [keV]");
   hsim_4->GetYaxis()->SetTitle("Counts");
   ss.str("");
-  ss << "beam energy " << beam_energy << " keV";
+  ss << "sim energy " << sim_energy << " keV";
   hsim_4->SetTitle(ss.str().c_str());
   chain->Draw("energy0>>hsim_4", "energy0>10.", "");
 
