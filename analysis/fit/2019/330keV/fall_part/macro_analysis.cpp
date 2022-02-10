@@ -1,5 +1,5 @@
 {
-  gROOT->ProcessLine(".!rm -f ../../../../../../result/2020/330keV/chi2_fall_part.dat");
+  gROOT->ProcessLine(".!rm -f ../../../../../../result/2020/340keV/chi2_fall_part.dat");
 
   gROOT->ProcessLine(".L analysis.cpp");
   gROOT->ProcessLine("analysis(327.5)");

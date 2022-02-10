@@ -2,12 +2,12 @@
   gROOT->ProcessLine(".L getrootfile.cpp");
 
   //330keV
-  gROOT->ProcessLine("getrootfile(330, 327.5)");
-  gROOT->ProcessLine("getrootfile(330, 327.6)");
-  gROOT->ProcessLine("getrootfile(330, 327.7)");
-  gROOT->ProcessLine("getrootfile(330, 327.8)");
-  gROOT->ProcessLine("getrootfile(330, 327.9)");
-  gROOT->ProcessLine("getrootfile(330, 328.0)");
+  //gROOT->ProcessLine("getrootfile(330, 327.5)");
+  //gROOT->ProcessLine("getrootfile(330, 327.6)");
+  //gROOT->ProcessLine("getrootfile(330, 327.7)");
+  //gROOT->ProcessLine("getrootfile(330, 327.8)");
+  //gROOT->ProcessLine("getrootfile(330, 327.9)");
+  //gROOT->ProcessLine("getrootfile(330, 328.0)");
   gROOT->ProcessLine("getrootfile(330, 328.1)");
 
   //gROOT->ProcessLine("getrootfile(330, 328.2)");
