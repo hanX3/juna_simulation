@@ -12,4 +12,8 @@ fi
 cd ../../../sim_raw_data/350keV/
 
 #nohup ./auto.sh 347.0 20000000 > 347.0.out &
-nohup ./auto.sh 347.1 20000000 > 347.1.out &
+#nohup ./auto.sh 347.1 20000000 > 347.1.out &
+#nohup ./auto.sh 347.2 20000000 > 347.2.out &
+#nohup ./auto.sh 347.3 20000000 > 347.3.out &
+nohup ./auto.sh 347.4 20000000 > 347.4.out &
+nohup ./auto.sh 347.5 20000000 > 347.4.out &
