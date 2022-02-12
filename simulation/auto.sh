@@ -27,7 +27,7 @@ make
 mv HPGe em_${1}
 sed -i "s/beamOn 0/beamOn ${2}/g" run2.mac
 
-for ((i=0;i<40;i++));
+for ((i=0;i<8;i++));
 do
   nohup ./em_${1} run2.mac > out_${i}.txt &
   sleep 3
