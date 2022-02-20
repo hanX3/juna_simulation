@@ -2,13 +2,13 @@
 #include <dirent.h>
 
 //exp adc range
-double adcmin = 3300;
-double adcmax = 6300;
-int binnum = 3000;
+double adcmin = 1600;
+double adcmax = 3600;
+int binnum = 2000;
 
 //set cali par
-double p0 = 1.22342;
-double p1 = 0.429543;
+double p0 = 2.58919;
+double p1 = 0.812258;
 
 //background
 double bgxmin = 2300.;//keV
@@ -19,8 +19,8 @@ int rebinvalue = 1;
 string histname = "hsim_1";
 
 //rise part
-double risepartstart = 2213.;
-double risepartstop = 2243.;
+double risepartstart = 2095.;
+double risepartstop = 2125.;
 string fitfuncrise = "pol2";
 
 //get scale
@@ -28,23 +28,23 @@ string fitfuncscale = "pol6";
 double scalestep = 0.01;
 
 //fall part
-double fallpartstart = 2247.2;
-double fallpartstop = 2250.8;
+double fallpartstart = 2127.6;
+double fallpartstop = 2131.0;
 string fitfuncfall = "pol2";
 
 //main
 void analysis(double proton_energy)
 {
-  gROOT->SetBatch(0);
+  gROOT->SetBatch(1);
 
   std::ofstream ofs;
-  ofs.open ("../../../../../../result/2020/330keV/chi2_fall_part.dat", std::ofstream::out | std::ofstream::app);
+  ofs.open ("../../../../../../result/2019/200keV/chi2_fall_part.dat", std::ofstream::out | std::ofstream::app);
 
   //data path
   char filename[1024];
   char savepdf[1024];
-  sprintf(filename, "../../../../../../rootfile/2020/proton_%0.1fkeV.root", proton_energy);
-  sprintf(savepdf, "../../../../../../result/2020/330keV/fall_part_%0.1f.pdf", proton_energy);
+  sprintf(filename, "../../../../../../rootfile/2019/proton_%0.1fkeV.root", proton_energy);
+  sprintf(savepdf, "../../../../../../result/2019/200keV/fall_part_%0.1f.pdf", proton_energy);
   cout << "filename " << filename << endl;
   cout << "savepdf " << savepdf << endl;
 
@@ -88,7 +88,7 @@ void analysis(double proton_energy)
   //
   cc->cd(2);
   hsim->SetLineColor(1);
-  hsim->GetXaxis()->SetRangeUser(2100., 2300);
+  hsim->GetXaxis()->SetRangeUser(2000., 2200);
   hsim->Draw();
 
   //fit rise part simulation data
@@ -101,8 +101,10 @@ void analysis(double proton_energy)
   //cout << "exprisestartbin  " << exprisestartbin << endl;
   //cout << "exprisestopbin  " << exprisestopbin << endl;
 
-  double scalemean = hsim->GetMaximum()/h1->GetMaximum(); 
-  double scalerange = scalemean/2.;
+  //double scalemean = hsim->GetMaximum()/h1->GetMaximum(); 
+  //double scalerange = scalemean/2.;
+  double scalemean = 2.4; 
+  double scalerange = 2.;
   cout << "scalemean  " << scalemean << endl;
   cout << "scalerange  " << scalerange << endl;
 
@@ -121,7 +123,7 @@ void analysis(double proton_energy)
       chi2 += (ytemp-h1->GetBinContent(ii))*(ytemp-h1->GetBinContent(ii))/h1->GetBinContent(ii);
     }
     chi2 /= (double)(exprisestopbin-exprisestartbin+1.);
-    //cout << "sca  " << sca << "  chi2  " << chi2 << endl;
+    cout << "sca  " << sca << "  chi2  " << chi2 << endl;
     
     grscale->SetPoint(scalecnt, sca, chi2);
     scalecnt++;
@@ -167,8 +169,8 @@ void analysis(double proton_energy)
     yysimulatescale[i] = (double)hsim->GetBinContent(i+1)/scalemin+gRandom->Gaus(bg_exp,1.);
   }
   TGraphErrors *grexp = new TGraphErrors(nexp, xx, yy, exx, eyy);
-  grexp->GetXaxis()->SetRangeUser(2160., 2260.);
-  grexp->GetYaxis()->SetRangeUser(0., 110.);
+  grexp->GetXaxis()->SetRangeUser(2060., 2140.);
+  grexp->GetYaxis()->SetRangeUser(0., 250.);
   grexp->SetMarkerColor(1);
   grexp->SetMarkerStyle(24);
   grexp->SetMarkerSize(1);
@@ -211,8 +213,8 @@ void analysis(double proton_energy)
   gtemp->SetMarkerColor(1);
   gtemp->SetMarkerStyle(24);
   gtemp->SetMarkerSize(1);
-  gtemp->GetXaxis()->SetRangeUser(2243., 2253.);
-  gtemp->GetYaxis()->SetRangeUser(0., 110.);
+  gtemp->GetXaxis()->SetRangeUser(2120., 2140.);
+  gtemp->GetYaxis()->SetRangeUser(0., 250.);
   gtemp->Draw("AP");
   grsimulationscale->Draw("P same");
   tffallp->Draw("same");

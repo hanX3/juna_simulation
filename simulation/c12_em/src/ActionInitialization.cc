@@ -38,7 +38,7 @@ void ActionInitialization::Build() const
   SetUserAction(priGen);
   SetUserAction(new RunAction(rootIO, priGen));
   SetUserAction(new EventAction(priGen, rootIO));
-  SetUserAction(new SteppingAction(detconstruct, rootIO));
+  //SetUserAction(new SteppingAction(detconstruct, rootIO));
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

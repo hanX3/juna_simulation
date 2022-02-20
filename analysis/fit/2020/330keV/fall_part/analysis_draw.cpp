@@ -33,7 +33,7 @@ double fallpartstop = 2250.8;
 string fitfuncfall = "pol2";
 
 //main
-void analysis(double proton_energy)
+void analysis_draw(double proton_energy)
 {
   gROOT->SetBatch(0);
 
@@ -217,6 +217,28 @@ void analysis(double proton_energy)
   grsimulationscale->Draw("P same");
   tffallp->Draw("same");
   tfbg->Draw("same");
+
+  TCanvas *cc0 = new TCanvas("cc0", "cc0", 0, 0, 480, 360);
+  cc0->cd();
+  TGraphErrors *gtemp_2 = new TGraphErrors(nexp, xx, yy, exx, eyy);
+  gtemp_2->SetMarkerColor(1);
+  gtemp_2->SetMarkerStyle(24);
+  gtemp_2->SetMarkerSize(1);
+  gtemp_2->GetXaxis()->SetRangeUser(2160., 2260.);
+  gtemp_2->GetYaxis()->SetRangeUser(0., 110.);
+  gtemp_2->GetXaxis()->SetTitle("Energy [keV]");
+  gtemp_2->GetYaxis()->SetTitle("Count");
+  gtemp_2->SetTitle("");
+  gtemp_2->Draw("AP");
+  grsimulationscale->Draw("P same");
+  tffallp->Draw("same");
+
+  TLegend *len = new TLegend(0.2, 0.65, 0.6, 0.88);
+  len->AddEntry(gtemp_2, "Exp 330 keV");
+  len->AddEntry(grsimulationscale, "Simulation");
+  len->AddEntry(tffallp, "Fit", "l");
+  len->Draw();
+
 
   ofs.close();
   cc->SaveAs(savepdf);

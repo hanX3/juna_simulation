@@ -53,3 +53,9 @@ Info in <TCanvas::MakeDefCanvas>:  created default TCanvas with name c1
 ../../../../exp_data/2019_200keV.txt
 ../../../../sim_raw_data/200keV/em_200.7/data/
 ../../../../exp_data/2019_200keV.txt
+../../../../sim_raw_data/200keV/em_200.8/data/
+../../../../exp_data/2019_200keV.txt
+../../../../sim_raw_data/200keV/em_200.9/data/
+../../../../exp_data/2019_200keV.txt
+../../../../sim_raw_data/200keV/em_201.0/data/
+../../../../exp_data/2019_200keV.txt
